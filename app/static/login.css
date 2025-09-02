@@ -1,0 +1,132 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #18141d url('img/background1.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.main-header {
+    background: #26182D;
+    padding: 40px 0;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.nav-menu li a:hover {
+    text-decoration: underline;
+}
+
+.header-content {
+    background: rgba(24, 20, 29, 0.25);
+    border: 1px solid #ffffff33;
+    border-radius: 15px;
+    padding: 80px 80px 80px 80px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.header-content h1 {
+    font-family: 'Jersey 25' sans-serif;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 40;
+    font-weight: bold;
+}
+
+.header-content label {
+    color: #ffffff;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+.header-content input {
+
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 40px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    color: #18141d;
+}
+
+.header-content button {
+    width: 100%;
+    padding: 10px;
+    background: #16003d;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.header-content button:hover {
+    background: #7c3aed;
+}
+
+.forgot-password {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.forgot-password span {
+    color: #ffffff;
+    font-size: 0.98rem;
+}
+
+.forgot-password a {
+    color: #7c3aed;
+    text-decoration: none;
+    font-size: 0.98rem;
+    transition: all 0.2s ease;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+
+.forgot-password a.register-link:hover {
+    color: #d4d4d4;
+}
+
+.login-center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    display: block;
+}

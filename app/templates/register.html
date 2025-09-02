@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../static/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main class="login-center">
+        <div class="header-content">
+            <h1 class="fonte-especial">Cadastro</h1>
+            <form action="" method="post">
+                <label for="fullname">Nome Completo</label>
+                <input type="text" id="fullname" name="nomeForm" placeholder="Insira seu nome" autocomplete="off"
+                    required>
+
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="emailForm" placeholder="Insira um email" autocomplete="off"
+                    required>
+
+
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="senhaForm" placeholder="********" required>
+
+
+                <label for="confirm-password">Confirmar Senha</label>
+                <input type="password" id="confirm-password" name="confirm_senhaForm" placeholder="********" required>
+
+
+                <button type="submit">Cadastrar</button>
+            </form>
+            <div class="forgot-password">
+                <span>Já tem uma conta? </span>
+                <a href="http://127.0.0.1:5000/login" class="login-link">Faça o login</a>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
