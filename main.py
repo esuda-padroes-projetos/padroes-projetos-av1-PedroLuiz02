@@ -6,4 +6,4 @@ if __name__ == "__main__":
         db.create_all()
     app.run(debug=True)
 
-# Rodar com ( python -m app.main )
+# Rodar com ( python main.py )
