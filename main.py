@@ -7,3 +7,5 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 # Rodar com ( python main.py )
+#email: teste@gmail.com
+#senha: 123456
