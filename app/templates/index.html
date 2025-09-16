@@ -1,21 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vortex Energy</title>
     <link rel="shortcut icon" type="image/x-icon" href="../static/img/logo.png">
-    <link rel="stylesheet" href="../static/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/home.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="../static/script.js"></script>
 </head>
 
+
 <body>
-    {% if current_user.is_authenticated %}
-    <h1>Olá, {{current_user.nome.split()[0]}}!</h1>
-    {% else %}
-    <h1>Olá, Visitante!</h1>
-    {% endif %}
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="#" class="logo-link">
+                    <img src="../static/img/logo.png" alt="Logo da empresa">
+                    <span class="company-name">Vortex</span>
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#section2">Produtos</a></li>
+                    <li><a href="http://127.0.0.1:5000/shop" class="cart-link">
+                            Comprar
+                            <i class="fi fi-rr-shopping-cart"></i>
+                        </a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+
+            {% if current_user.is_authenticated %}
+            <div class="user-menu">
+                <div class="user-icon" id="userIcon">
+                    <i class="fi fi-sr-user"></i>
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div class="user-header">
+                        <i class="fi fi-sr-user"></i>
+                        <div class="user-info">
+                            <span>{{current_user.nome.split()[0]}}</span>
+                            <a href="#" class="edit-profile">Edit Profile</a>
+                        </div>
+                        <button class="close-btn" id="closeMenu">
+                            <i class="fi fi-sr-cross"></i>
+                        </button>
+                    </div>
+                    <div class="menu-options">
+                        <a href="#"><i class="fi fi-sr-settings"></i> Configurações</a>
+                        <a href="http://127.0.0.1:5000/logout" id="sair"><i class="fi fi-sr-sign-out"></i> Sair</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="user-menu">
+                <div class="user-icon" id="userIcon">
+                    <a href="http://127.0.0.1:5000/login" style="text-decoration: none; color: inherit;"><i class="fi fi-sr-user"></i></a>
+                </div>
+                {% endif %}
+            </div>
+    </header>
+
+
+    <main>
+        <section class="section-1">
+            <div class="launch-container">
+                <img src="../static/img/latas_banner.png" alt="Latas" class="launch-image">
+                <h2 class="launch-title">Lançamentos</h2>
+            </div>
+        </section>
+
+
+        <section class="section-2" id="section2">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="product-container">
+                            <img src="../static/img/lata1.png" alt="Lata 1">
+                        </div>
+                    </div>
+
+
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="product-container">
+                            <img src="../static/img/lata2.png" alt="Lata 2">
+                        </div>
+                    </div>
+
+
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="product-container">
+                            <img src="../static/img/Lata3.png" alt="Lata 3">
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="product-container">
+                            <img src="../static/img/Lata4.png" alt="Lata 4">
+                        </div>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <div class="product-container">
+                            <img src="../static/img/Lata5.png" alt="Lata 5">
+                        </div>
+                    </div>
+                    <!-- Slide 6 -->
+                    <div class="swiper-slide">
+                        <div class="product-container">
+                            <img src="../static/img/Lata6.png" alt="Lata 6">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+
+        <section class="section-3">
+            <div class="product-details">
+                <div class="product-image-container">
+                    <img src="../static/img/lata1.png" alt="Lata Vortex">
+                </div>
+                <div class="product-description">
+                    <h2>Vortex Energy</h2>
+                    <p>Descrição detalhada do energético, seus benefícios e ingredientes.</p>
+                    <div class="product-features">
+                        <div class="feature">
+                            <span class="feature-value">473ml</span>
+                            <span class="feature-label">Volume</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-value">32mg</span>
+                            <span class="feature-label">Cafeína</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-value">27g</span>
+                            <span class="feature-label">Açúcar</span>
+                        </div>
+                    </div>
+                    <button class="buy-button">Comprar Agora</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Use cases</h3>
+                <ul>
+                    <li><a href="#">UI design</a></li>
+                    <li><a href="#">UX design</a></li>
+                    <li><a href="#">Wireframing</a></li>
+                    <li><a href="#">Diagramming</a></li>
+                    <li><a href="#">Brainstorming</a></li>
+                    <li><a href="#">Online whiteboard</a></li>
+                    <li><a href="#">Team collaboration</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">Prototyping</a></li>
+                    <li><a href="#">Development features</a></li>
+                    <li><a href="#">Design systems</a></li>
+                    <li><a href="#">Collaboration features</a></li>
+                    <li><a href="#">Design process</a></li>
+                    <li><a href="#">FigJam</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Best practices</a></li>
+                    <li><a href="#">Colors</a></li>
+                    <li><a href="#">Color wheel</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Developers</a></li>
+                    <li><a href="#">Resource library</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-social">
+                <a href="#"><i class="fi fi-brands-twitter"></i></a>
+                <a href="#"><i class="fi fi-brands-instagram"></i></a>
+                <a href="#"><i class="fi fi-brands-youtube"></i></a>
+                <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

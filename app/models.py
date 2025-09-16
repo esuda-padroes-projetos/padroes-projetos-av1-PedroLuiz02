@@ -14,6 +14,9 @@ class Usuario(UserMixin, db.Model):
 
     pedidos = db.relationship("Pedido", back_populates="usuario")
 
+    def get_id(self):
+        return str(self.id_usuario)
+
 class Produto(db.Model):
     __tablename__ = "produtos"
 
@@ -47,15 +50,14 @@ class Pedido(db.Model):
     usuario = db.relationship("Usuario", back_populates="pedidos")
     itens = db.relationship("ItemPedido", back_populates="pedido")
 
-class Item_pedido(db.Model):
+class ItemPedido(db.Model):
     __tablename__ = 'itens_pedidos'
 
     id_item = db.Column(db.Integer, primary_key=True)
-    id_pedido = db.Column(db.Integer, ForeignKey("pedidos.id_pedido"), nullable=False)
-    id_produto = db.Column(db.Integer, ForeignKey("produtos.id_produto"), nullable=False)
+    id_pedido = db.Column(db.Integer, db.ForeignKey("pedidos.id_pedido"), nullable=False)
+    id_produto = db.Column(db.Integer, db.ForeignKey("produtos.id_produto"), nullable=False)
     quantidade = db.Column(db.Integer, nullable=False)
     tipo = db.Column(Enum("unidade", "fardo", name="tipo_item"), nullable=False)
-
 
     pedido = db.relationship("Pedido", back_populates="itens")
     produto = db.relationship("Produto")

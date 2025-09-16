@@ -21,6 +21,12 @@ def home():
         print(current_user.nome)
     return render_template('index.html')
 
+@app.route('/shop')
+def shop():
+    if current_user.is_authenticated:
+        print(current_user.nome)
+    return render_template('shop.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
@@ -35,12 +41,6 @@ def login():
         
         login_user(user)
         return redirect(url_for('home'))
-    
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('home'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -59,3 +59,9 @@ def register():
         login_user(novo_usuario)
 
         return redirect(url_for('login'))
+    
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
