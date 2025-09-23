@@ -25,6 +25,7 @@ class Produto(db.Model):
     descricao = db.Column(db.String())
     preco_unitario = db.Column(Numeric(10, 2), nullable=False)
     sabor = db.Column(db.String(50), nullable=False)
+    imagem = db.Column(db.String(200), nullable=False)
 
     pacotes = relationship("Pacote", back_populates="produto")
 
@@ -57,7 +58,6 @@ class ItemPedido(db.Model):
     id_pedido = db.Column(db.Integer, db.ForeignKey("pedidos.id_pedido"), nullable=False)
     id_produto = db.Column(db.Integer, db.ForeignKey("produtos.id_produto"), nullable=False)
     quantidade = db.Column(db.Integer, nullable=False)
-    tipo = db.Column(Enum("unidade", "fardo", name="tipo_item"), nullable=False)
 
     pedido = db.relationship("Pedido", back_populates="itens")
     produto = db.relationship("Produto")

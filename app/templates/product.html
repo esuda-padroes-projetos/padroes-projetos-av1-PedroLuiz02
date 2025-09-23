@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vortex Energy</title>
     <link rel="shortcut icon" type="image/x-icon" href="../static/img/logo.png">
-    <link rel="stylesheet" href="../static/home.css">
+    <link rel="stylesheet" href="../static/product.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo-container">
-                <a href="#" class="logo-link">
+                <a href="http://127.0.0.1:5000/" class="logo-link">
                     <img src="../static/img/logo.png" alt="Logo da empresa">
                     <span class="company-name">Vortex</span>
                 </a>
@@ -30,7 +30,7 @@
 
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#section2">Produtos</a></li>
+                    <li><a href="http://127.0.0.1:5000/#section2">Produtos</a></li>
                     <li><a href="http://127.0.0.1:5000/shop" class="cart-link">
                             Comprar
                             <i class="fi fi-rr-shopping-cart"></i>
@@ -76,87 +76,33 @@
 
     <main>
         <section class="section-1">
-            <div class="launch-container">
-                <img src="../static/img/latas_banner.png" alt="Latas" class="launch-image">
-                <h2 class="launch-title">Lançamentos</h2>
-            </div>
-        </section>
-
-
-        <section class="section-2" id="section2">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/lata1.png" alt="Lata 1">
-                        </div>
-                    </div>
-
-
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/lata2.png" alt="Lata 2">
-                        </div>
-                    </div>
-
-
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/Lata3.png" alt="Lata 3">
-                        </div>
-                    </div>
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/Lata4.png" alt="Lata 4">
-                        </div>
-                    </div>
-                    <!-- Slide 5 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/Lata5.png" alt="Lata 5">
-                        </div>
-                    </div>
-                    <!-- Slide 6 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/Lata6.png" alt="Lata 6">
-                        </div>
-                    </div>
+            <div class="item-box">
+                <div class="lata">
+                    <img src="{{ url_for('static', filename='img/' ~ produto.imagem) }}" alt="{{ produto.nome }}">
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
-
-
-        <section class="section-3">
-            <div class="product-details">
-                <div class="product-image-container">
-                    <img src="../static/img/lata1.png" alt="Lata Vortex">
-                </div>
-                <div class="product-description">
-                    <h2>Vortex Energy</h2>
-                    <p>Descrição detalhada do energético, seus benefícios e ingredientes.</p>
-                    <div class="product-features">
-                        <div class="feature">
-                            <span class="feature-value">473ml</span>
-                            <span class="feature-label">Volume</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-value">32mg</span>
-                            <span class="feature-label">Cafeína</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-value">27g</span>
-                            <span class="feature-label">Açúcar</span>
-                        </div>
-                    </div>
-                    <button class="buy-button">Comprar Agora</button>
+                
+                <div class="product-info">
+                    {% if current_user.is_authenticated %}
+                        <p>Olá, <strong>{{ current_user.nome }}</strong>!</p>
+                    {% else %}
+                        <p>Faça login para comprar.</p>
+                    {% endif %}
+                
+                    <h2>{{ produto.nome if produto is defined else "Produto Indisponível" }}</h2>
+                    <p>{{ produto.descricao if produto is defined else "Indisponível" }}</p>
+                    <span class="price">
+                        R$ {{ produto.preco_unitario if produto is defined else "Indisponível" }}
+                    </span>
+                
+                    <form action="{{ url_for('criar_pedido') }}" method="POST">
+                        <input type="hidden" name="usuario_id" value="{{ current_user.id_usuario if current_user.is_authenticated else '' }}">
+                        <input type="hidden" name="produto_id[]" value="{{ produto.id_produto if produto is defined else 0 }}">
+                    
+                        <label>Quantidade:</label>
+                        <input type="number" name="quantidade[]" value="1" min="1" required>
+                    
+                        <button type="submit" id="buy-btn">Adicionar ao Carrinho</button>
+                    </form>
                 </div>
             </div>
         </section>

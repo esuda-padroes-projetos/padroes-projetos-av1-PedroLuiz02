@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vortex Energy</title>
     <link rel="shortcut icon" type="image/x-icon" href="../static/img/logo.png">
-    <link rel="stylesheet" href="../static/home.css">
+    <link rel="stylesheet" href="../static/shop.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo-container">
-                <a href="/" class="logo-link">
+                <a href="http://127.0.0.1:5000/" class="logo-link">
                     <img src="../static/img/logo.png" alt="Logo da empresa">
                     <span class="company-name">Vortex</span>
                 </a>
@@ -31,7 +31,7 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="http://127.0.0.1:5000/#section2">Produtos</a></li>
-                    <li><a href="./shop.html" class="cart-link">
+                    <li><a href="#" class="cart-link">
                             Comprar
                             <i class="fi fi-rr-shopping-cart"></i>
                         </a></li>
@@ -57,8 +57,11 @@
                     </div>
                     <div class="menu-options">
                         <a href="#"><i class="fi fi-sr-settings"></i> Configurações</a>
-                        <a href="http://127.0.0.1:5000/logout"><i class="fi fi-sr-sign-out"></i> Sair</a>
+                        <a href="http://127.0.0.1:5000/logout" id="sair"><i class="fi fi-sr-sign-out"></i> Sair</a>
                     </div>
+                </div>
+                <div class="bag-icon">
+                        <i class="fi fi-rr-basket-shopping-simple"></i>
                 </div>
             </div>
             {% else %}
@@ -69,6 +72,23 @@
                 {% endif %}
             </div>
     </header>
+
+
+    <main>
+        <section class="section-1">
+            {% for produto in produtos %}
+            <div class="item-box">
+                <img src="{{ url_for('static', filename='img/' ~ produto.imagem) }}" alt="{{ produto.nome }}">
+                
+                <h6>{{ produto.nome }}</h6>
+                
+                <button id="buy-btn">
+                    <a href="{{ url_for('product', id=produto.id_produto) }}">Comprar</a>
+                </button>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
 
 
     <footer>
