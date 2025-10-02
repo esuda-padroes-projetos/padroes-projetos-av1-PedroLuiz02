@@ -117,3 +117,12 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+input {
+    border: 2px solid #ccc;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+}

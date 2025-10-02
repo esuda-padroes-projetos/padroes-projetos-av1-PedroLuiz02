@@ -263,6 +263,162 @@ body {
 }
 
 
+.dropdown-menu-bag {
+  position: fixed;
+  top: 0;
+  right: -455px;
+  width: 430px;
+  height: 100vh;
+  background: #18141d;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease;
+  z-index: 1001;
+}
+
+
+.dropdown-menu-bag.active {
+  right: 0;
+}
+
+
+.bag-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #2d2d2d;
+}
+
+
+.bag-header i {
+  font-size: 2rem;
+  color: #fff;
+
+  cynergy\assets\css\dashboard.css .product-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+  }
+
+  .product-container img {
+      max-height: 500px;
+      width: auto;
+      object-fit: contain;
+  }
+
+  .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+}
+
+
+.bag-info {
+  flex: 1;
+}
+
+
+.bag-info span {
+  display: block;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+
+.close-btn-bag {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 5px;
+}
+
+
+.bag-options {
+  padding: 20px;
+}
+
+
+.bag-options a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px;
+  transition: background 0.2s;
+}
+
+
+.bag-options a:hover {
+  background: #2d2d2d;
+}
+
+
+.bag-options i {
+  font-size: 1.2rem;
+}
+
+.bag-options #sair:hover {
+  color: rgb(238, 70, 70);
+}
+
+
+#bag-buy-btn{
+  color: #fff;
+  background: #7c3aed;
+  border-radius: 10px;
+  width: 84%;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  border: none;
+  transform: scale(0.98);
+  transition: transform 0.5s ease-in-out;
+  
+}
+
+
+#bag-buy-btn:hover{
+  transform: scale(1.0);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+#bag-buy-btn a{
+  background: #7c3aed;
+  text-decoration: none;
+  color: inherit;
+  margin: 0 auto;
+}
+
+
+.btn-delete {
+  margin-left: 1.5rem;
+  color: #ce3c3c;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+
+.btn-delete i {
+  font-size: inherit;
+}
+
+
+.btn-delete:hover {
+  color: #ac3b3b;
+}
+
+
 .section-1 {
   background: #18141d;
   min-height: 100vh;
@@ -318,12 +474,12 @@ section h1 {
   padding: 0.5rem 0.5rem;
   cursor: pointer;
   border: none;
-  transform: scale(0.95);
+  transform: scale(0.97);
+  transition: transform 0.5s ease-in-out;
 }
 
 
 #buy-btn:hover{
-  transition: 0.5s;
   transform: scale(1.0);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

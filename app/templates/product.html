@@ -60,16 +60,57 @@
                         <a href="http://127.0.0.1:5000/logout" id="sair"><i class="fi fi-sr-sign-out"></i> Sair</a>
                     </div>
                 </div>
-                <div class="bag-icon">
+
+
+                <div class="bag-icon" id="bagIcon">
+                    <i class="fi fi-rr-basket-shopping-simple"></i>
+                </div>
+                <div class="dropdown-menu-bag" id="dropdownMenuBag">
+                    <div class="bag-header">
                         <i class="fi fi-rr-basket-shopping-simple"></i>
+                        <div class="bag-info">
+                            <span>{{current_user.nome.split()[0]}}</span>
+                        </div>
+                        <button class="close-btn-bag" id="closeMenuBag">
+                            <i class="fi fi-sr-cross"></i>
+                        </button>
+                    </div>
+
+                    <div class="bag-options">
+
+                        {% if pedido_aberto %}
+                            {% for item in pedido_aberto.itens %}
+                                <div class="bag-itens">
+                                    <h4>{{ item.produto.nome }}</h4>
+                                    <span>Unidades: {{ item.quantidade }}</span>
+                                    <h4>R${{ item.produto.preco_unitario }}</h4>
+                                    <h4>Subtotal: R${{ item.quantidade * item.produto.preco_unitario }}</h4>
+                                
+                                    <form action="{{ url_for('deletar_item_route', id_item=item.id_item) }}" method="post">
+                                        <button type="submit" class="btn-delete">
+                                            <i class="fi fi-rr-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>Seu carrinho está vazio.</p>
+                        {% endif %}
+
+                        <button id="bag-buy-btn">
+                            <a href="#">Finalizar Compra</a>
+                        </button>
+
+                    </div>
                 </div>
             </div>
+
             {% else %}
             <div class="user-menu">
                 <div class="user-icon" id="userIcon">
                     <a href="http://127.0.0.1:5000/login" style="text-decoration: none; color: inherit;"><i class="fi fi-sr-user"></i></a>
                 </div>
-                {% endif %}
+            {% endif %}
             </div>
     </header>
 
@@ -82,11 +123,6 @@
                 </div>
                 
                 <div class="product-info">
-                    {% if current_user.is_authenticated %}
-                        <p>Olá, <strong>{{ current_user.nome }}</strong>!</p>
-                    {% else %}
-                        <p>Faça login para comprar.</p>
-                    {% endif %}
                 
                     <h2>{{ produto.nome if produto is defined else "Produto Indisponível" }}</h2>
                     <p>{{ produto.descricao if produto is defined else "Indisponível" }}</p>
@@ -100,8 +136,12 @@
                     
                         <label>Quantidade:</label>
                         <input type="number" name="quantidade[]" value="1" min="1" required>
-                    
-                        <button type="submit" id="buy-btn">Adicionar ao Carrinho</button>
+
+                        {% if current_user.is_authenticated %}
+                        <button type="submit" id="buy-btn">Comprar</button>
+                        {% else %}
+                        <button type="button" id="buy-btn"><a href="/login">Faça Login Para Comprar</a></button>
+                        {% endif %}
                     </form>
                 </div>
             </div>

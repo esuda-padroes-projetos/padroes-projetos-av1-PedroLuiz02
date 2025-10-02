@@ -49,7 +49,7 @@ class Pedido(db.Model):
     status = db.Column(db.String(20), default="Em andamento")
 
     usuario = db.relationship("Usuario", back_populates="pedidos")
-    itens = db.relationship("ItemPedido", back_populates="pedido")
+    itens = db.relationship("ItemPedido", back_populates="pedido", cascade="all, delete-orphan")
 
 class ItemPedido(db.Model):
     __tablename__ = 'itens_pedidos'
