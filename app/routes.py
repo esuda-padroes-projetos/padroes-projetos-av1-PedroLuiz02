@@ -59,6 +59,7 @@ def criar_pedido():
     usuario = current_user
     produto_ids = request.form.getlist("produto_id[]")
     quantidades = request.form.getlist("quantidade[]")
+    origem = request.referrer or url_for("shop")
 
     pedido = Pedido.query.filter_by(id_usuario=usuario.id_usuario, status="Em andamento").first()
 
@@ -85,13 +86,15 @@ def criar_pedido():
             db.session.add(novo_item)
 
     db.session.commit()
-    return redirect(url_for("shop"))
+    return redirect(origem)
 
 
 
 @app.route("/item/deletar/<int:id_item>", methods=["POST"])
 @login_required
 def deletar_item_route(id_item):
+    origem = request.referrer or url_for("shop")
+
     item = ItemPedido.query.get(id_item)
     if item and item.pedido.id_usuario == current_user.id_usuario:
         db.session.delete(item)
@@ -103,7 +106,7 @@ def deletar_item_route(id_item):
         db.session.delete(item.pedido)
         db.session.commit()
         print("Pedido removido porque ficou vazio.", "info")
-    return redirect(url_for("shop"))
+    return redirect(origem)
 
 
 regex_nome = r"^[A-Za-zÀ-ÖØ-öø-ÿ]+(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)+$"

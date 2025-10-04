@@ -370,10 +370,31 @@ body {
     font-size: 1.2rem;
 }
   
+
 .bag-options #sair:hover {
     color: rgb(238, 70, 70);
 }
+
+
+#bag-img {
+    max-height: 92px;
+    width: auto;
+    object-fit: contain;
+}
   
+  
+#lata-bg{
+    max-height: 150px;
+    max-width: 95px;
+    object-fit: contain;
+    background-color: #CFCFCF;
+    padding: 0.7rem 0.7rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
   
 #bag-buy-btn{
     color: #fff;

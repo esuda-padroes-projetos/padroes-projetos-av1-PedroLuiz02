@@ -83,6 +83,9 @@
                         {% if pedido_aberto %}
                             {% for item in pedido_aberto.itens %}
                                 <div class="bag-itens">
+                                    <div id="lata-bg">
+                                        <img src="{{ url_for('static', filename='img/' ~ item.produto.imagem) }}" alt="{{ item.produto.nome }}" id="bag-img">
+                                    </div>
                                     <h4>{{ item.produto.nome }}</h4>
                                     <span>Unidades: {{ item.quantidade }}</span>
                                     <h4>R${{ item.produto.preco_unitario }}</h4>
