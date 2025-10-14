@@ -31,12 +31,12 @@
 
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="http://127.0.0.1:5000/#section2">Produtos</a></li>
+                    <li><a href="/#section2">Produtos</a></li>
                     <li><a href="#" class="cart-link">
                             Comprar
                             <i class="fi fi-rr-shopping-cart"></i>
                         </a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li><a href="/sobre">Empresa</a></li>
                 </ul>
             </nav>
 
@@ -59,7 +59,7 @@
                     </div>
                     <div class="menu-options">
                         <a href="#"><i class="fi fi-sr-settings"></i> Configurações</a>
-                        <a href="http://127.0.0.1:5000/logout" id="sair"><i class="fi fi-sr-sign-out"></i> Sair</a>
+                        <a href="http://127.0.0.1:5000/logout" id="sair"><i class="fi fi-sr-exit"></i> Sair</a>
                     </div>
                 </div>
 
@@ -82,21 +82,24 @@
 
                         {% if pedido_aberto %}
                             {% for item in pedido_aberto.itens %}
-                                <div class="bag-itens">
-                                    <div id="lata-bg">
-                                        <img src="{{ url_for('static', filename='img/' ~ item.produto.imagem) }}" alt="{{ item.produto.nome }}" id="bag-img">
-                                    </div>
-                                    <h4>{{ item.produto.nome }}</h4>
-                                    <span>Unidades: {{ item.quantidade }}</span>
-                                    <h4>R${{ item.produto.preco_unitario }}</h4>
-                                    <h4>Subtotal: R${{ item.quantidade * item.produto.preco_unitario }}</h4>
-                                
-                                    <form action="{{ url_for('deletar_item_route', id_item=item.id_item) }}" method="post">
-                                        <button type="submit" class="btn-delete">
-                                            <i class="fi fi-rr-trash"></i>
-                                        </button>
-                                    </form>
+                            <div class="bag-itens">
+                                <div id="lata-bg">
+                                    <img src="{{ url_for('static', filename='img/' ~ item.produto.imagem) }}" alt="{{ item.produto.nome }}" id="bag-img">
                                 </div>
+                                <div id="info-prod">
+                                    <h4>{{ item.produto.nome }}</h4>
+                                    <span>Unidades: {{ item.quantidade }}</span> 
+                                    <br>
+                                    <h4>R${{ item.produto.preco_unitario }}</h4>
+                                </div>
+                                
+                                <form action="{{ url_for('deletar_item_route', id_item=item.id_item) }}" method="post">
+                                    <button type="submit" class="btn-delete">
+                                        <i class="fi fi-rr-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <h4>Subtotal: R${{ item.quantidade * item.produto.preco_unitario }}</h4> <br>
                             {% endfor %}
                         {% else %}
                             <p>Seu carrinho está vazio.</p>
@@ -123,12 +126,14 @@
     <main>
         <section class="section-1">
             {% for produto in produtos %}
-            <div class="item-box">
+            <div class="product-card">
                 <img src="{{ url_for('static', filename='img/' ~ produto.imagem) }}" alt="{{ produto.nome }}">
                 
-                <h6>{{ produto.nome }}</h6>
+                <h3>{{ produto.nome }}</h3>
+                <p class="price">R$ {{ produto.preco_unitario }}</p>
+                <p class="description">{{ produto.descricao }}</p>
                 
-                <button id="buy-btn">
+                <button class="buy-btn">
                     <a href="{{ url_for('product', id=produto.id_produto) }}">Comprar</a>
                 </button>
             </div>

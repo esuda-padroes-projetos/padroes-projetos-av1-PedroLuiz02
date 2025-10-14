@@ -89,6 +89,11 @@ def criar_pedido():
     return redirect(origem)
 
 
+@app.route("/sobre")
+def contato():
+    return render_template('sobre.html')
+
+
 
 @app.route("/item/deletar/<int:id_item>", methods=["POST"])
 @login_required

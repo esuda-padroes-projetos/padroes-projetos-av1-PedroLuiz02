@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vortex Energy</title>
+    <title>Vortex - Sobre Nós</title>
     <link rel="shortcut icon" type="image/x-icon" href="../static/img/logo.png">
+    <link rel="stylesheet" href="../static/product.css">
     <link rel="stylesheet" href="../static/home.css">
+    <link rel="stylesheet" href="../static/sobre.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../static/script.js"></script>
 </head>
-
-
 <body>
     <header class="main-header">
         <div class="header-container">
             <div class="logo-container">
-                <a href="#" class="logo-link">
+                <a href="http://127.0.0.1:5000/" class="logo-link">
                     <img src="../static/img/logo.png" alt="Logo da empresa">
                     <span class="company-name">Vortex</span>
                 </a>
             </div>
 
+
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#section2">Produtos</a></li>
+                    <li><a href="/#section2">Produtos</a></li>
                     <li><a href="/shop" class="cart-link">
                             Comprar
                             <i class="fi fi-rr-shopping-cart"></i>
                         </a></li>
-                    <li><a href="/sobre">Empresa</a></li>
+                    <li><a href="#">Empresa</a></li>
                 </ul>
             </nav>
+
 
             {% if current_user.is_authenticated %}
             <div class="user-menu">
@@ -120,108 +119,36 @@
             </div>
     </header>
 
-
     <main>
-        <section class="section-1">
-            <div class="launch-container">
-                <img src="../static/img/latas_banner.png" alt="Latas" class="launch-image">
-                <h2 class="launch-title">Lançamentos</h2>
-            </div>
+        <section class="hero-section">
+            <h1>Nossa História</h1>
+            <p class="subtitle">Energizando seus momentos desde 2023</p>
         </section>
 
+        <section class="about-section">
+            <div class="about-container">
+                <div class="about-text">
+                    <h2>Quem Somos</h2>
+                    <p>A Vortex nasceu da paixão por criar experiências únicas e energizantes. Fundada em 2023, nossa empresa surgiu com a missão de revolucionar o mercado de bebidas energéticas, trazendo sabores inovadores e design diferenciado.</p>
+                   
+                    <h2>Nossa Missão</h2>
+                    <p>Proporcionar energia e vitalidade através de produtos de alta qualidade, sempre respeitando a saúde de nossos consumidores e o meio ambiente.</p>
 
-        <section class="section-2" id="section2">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/lata1.png" alt="Lata 1">
-                        </div>
-                    </div>
-
-
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/lata2.png" alt="Lata 2">
-                        </div>
-                    </div>
-
-
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/Lata3.png" alt="Lata 3">
-                        </div>
-                    </div>
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/Lata4.png" alt="Lata 4">
-                        </div>
-                    </div>
-                    <!-- Slide 5 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/Lata5.png" alt="Lata 5">
-                        </div>
-                    </div>
-                    <!-- Slide 6 -->
-                    <div class="swiper-slide">
-                        <div class="product-container">
-                            <img src="../static/img/Lata6.png" alt="Lata 6">
-                        </div>
-                    </div>
+                    <h2>Nossos Valores</h2>
+                    <ul class="values-list">
+                        <li>Inovação em cada produto</li>
+                        <li>Compromisso com a qualidade</li>
+                        <li>Responsabilidade ambiental</li>
+                        <li>Transparência com nossos clientes</li>
+                    </ul>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
-
-
-        <section class="section-3">
-            <div class="product-details">
-                <div class="product-image-container">
-                    <img src="../static/img/lata1.png" alt="Lata Vortex">
-                </div>
-                <div class="product-description">
-                    <h2>Vortex Energy</h2>
-                    <p>O Vortex Energy é um energético desenvolvido para oferecer máximo desempenho físico e mental, combinando sabor intenso e fórmula equilibrada. Criado para quem busca foco, resistência e energia duradoura, ele é ideal para estudos, treinos, trabalho ou maratonas de games.</p>
-                    <h2>Benefícios</h2>
-                    <ul class="lista">
-                        <li>Aumenta a energia e disposição em poucos minutos.</li>
-                        <li>Sabor refrescante, sem aquele gosto artificial marcante de outros energéticos.</li>
-                        <li>Estimula o metabolismo, contribuindo para maior resistência em atividades intensas.</li>
-                    </ul> <br>
-                    <h2>Ingredientes Principais</h2>
-                    <ul class="lista">
-                        <li>Cafeína (32mg/473ml): estimula o sistema nervoso central, elevando os níveis de alerta e energia.</li>
-                        <li>Taurina: auxilia no metabolismo energético e na performance muscular.</li>
-                        <li>Vitaminas do Complexo B (B3, B6, B12): essenciais para transformar nutrientes em energia.</li>
-                        <li>Açúcares (27g): fonte rápida de energia para momentos de esforço intenso.</li>
-                        <li>Água gaseificada e aromatizantes naturais: garantem o sabor marcante e refrescante.</li>
-                    </ul> <br>
-                    <div class="product-features">
-                        <div class="feature">
-                            <span class="feature-value">473ml</span>
-                            <span class="feature-label">Volume</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-value">32mg</span>
-                            <span class="feature-label">Cafeína</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-value">27g</span>
-                            <span class="feature-label">Açúcar</span>
-                        </div>
-                    </div>
+               
+                <div class="about-image">
+                    <img src="../static/img/Latas.png" alt="Produtos Vortex">
                 </div>
             </div>
         </section>
     </main>
-
 
     <footer>
         <div class="footer-container">
@@ -275,5 +202,4 @@
         </div>
     </footer>
 </body>
-
 </html>
